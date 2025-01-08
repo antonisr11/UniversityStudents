@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            background-color: #191919;
+        }
+
+        * {
+            color: white;
+        }
+
+        th {
+            color: gold;
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        button {
+            color: white !important;
+        }
+
+        select {
+            border-color: #da3348 !important;
+            background-color: #191919 !important;
+            color: white !important;
+            text-align: center !important;
+        }
+
+    </style>
+    <title>Problems Page</title>
+</head>
+<body>
+
+<br/>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 d-flex justify-content-center align-items-center">
+        <h2>Antonis</h2>
+    </div>
+</div>
+
+<br/>
+<br/>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 d-flex justify-content-center align-items-center">
+        <table class="table">
+            <thead>
+            <tr>
+                <th th:if="${errorList.size() >= 2}">#</th>
+                <th>Problems</th>
+            </tr>
+            </thead>
+            <tbody th:each="i: ${#numbers.sequence(0, errorList.size()-1)}" th:if="${errorList.size() > 0}">
+            <tr>
+                <td th:if="${errorList.size() >= 2}"><span th:text="${i+1}"/></td>
+                <td><span th:text="${errorList.get(i)}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger"
+                th:attr="onclick=|location.href='${redirectionPage}';|"
+                type="button">
+            Okay, Continue
+        </button>
+    </div>
+</div>
+
+</body>
+</html>

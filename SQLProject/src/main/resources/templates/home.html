@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Main Screen</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            background-color: #191919;
+        }
+
+        button {
+            color: white !important;
+        }
+
+        .panel {
+            background-color: white;
+            width: 100%;
+            padding: 3%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .panel:hover {
+            background-color: gold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<br/>
+<div class="col-12 d-flex justify-content-center align-items-center">
+    <h2 style="color: gold;">Antonis</h2>
+</div>
+<br/><br/><br/><br/>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="panel rounded d-flex justify-content-center align-items-center"
+             onclick="location.href = 'http://localhost:8080/student/show/all';">
+            Students Menu
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="panel rounded d-flex justify-content-center align-items-center"
+             onclick="location.href = 'http://localhost:8080/program/show/all';">
+            Programs Menu
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="panel rounded d-flex justify-content-center align-items-center"
+             onclick="location.href = 'http://localhost:8080/msc/show/all';">
+            MSc Menu
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="panel rounded d-flex justify-content-center align-items-center"
+             onclick="location.href = 'http://localhost:8080/job/show/all';">
+            Jobs Menu
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="panel rounded d-flex justify-content-center align-items-center"
+             onclick="location.href = 'http://localhost:8080/department/show/all';">
+            Departments Menu
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="panel rounded d-flex justify-content-center align-items-center"
+             onclick="location.href = 'http://localhost:8080/statistics/show/all';">
+            Statistics Menu
+        </div>
+    </div>
+</div>
+<br/>
+
+</body>
+</html>

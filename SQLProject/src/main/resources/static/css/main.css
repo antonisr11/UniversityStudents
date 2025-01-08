@@ -1,0 +1,29 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    background-color: #191919;
+}
+
+* {
+    color: white;
+}
+
+th {
+    color: gold;
+}
+
+td {
+    text-align: center;
+}
+
+button {
+    color: white !important;
+}
+
+select{
+    border-color: #da3348 !important;
+    background-color: #191919 !important;
+    color: white !important;
+    text-align: center !important;
+}

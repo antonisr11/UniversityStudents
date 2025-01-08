@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{~/css/main.css}">
+    <style>
+        input, select {
+            text-align: center;
+            background-color: #191919 !important;
+            color: white !important;
+        }
+    </style>
+    <title>Showing One Department</title>
+</head>
+<body>
+<br/>
+
+<div class="col-12 d-flex justify-content-center align-items-center">
+    <h2>Antonis</h2>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button type="button" class="btn border border-danger"
+                onclick="location.href='http://localhost:8080/department/show/all'">Return
+        </button>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <form method="POST" action="http://localhost:8080/department/delete">
+            <input type="hidden" name="ID" th:value="${department.getId()}">
+            <button type="submit" class="btn border border-danger">Delete Department</button>
+        </form>
+    </div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger"
+                th:attr="onclick=|location.href='http://localhost:8080/department/show/update/'+'${department.getId()}';|"
+                type="button">
+            Edit Department
+        </button>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger"
+                th:attr="onclick=|location.href='http://localhost:8080/department/show/'+'${department.getId()}';|"
+                type="button">
+            Refresh Page
+        </button>
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>ID</th>
+                <td><span th:text="${department.getId()}"/></td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td><span th:text="${department.getName()}"/></td>
+            </tr>
+            <tr>
+                <th>Creation Year</th>
+                <td><span th:text="${department.getCreationYear()}"/></td>
+            </tr>
+            <tr>
+                <th>Code character</th>
+                <td><span th:text="${department.getCode()}"/></td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>
+                    <a th:href="@{${department.getWebsite()}}" th:text="${department.getWebsite()}" th:target="_blank"></a>
+                </td>
+            </tr>
+            <tr>
+                <th>Total Bachelor Students</th>
+                <td><span th:text="${department.getStudentBachelors().size()}"/></td>
+            </tr>
+            <tr>
+                <th>Total MSc Programs</th>
+                <td><span th:text="${department.getMscs().size()}"/></td>
+            </tr>
+            <tr>
+                <th>Total PhD Students</th>
+                <td><span th:text="${department.getStudentPhds().size()}"/></td>
+            </tr>
+            <tr>
+                <th>Total Unique Students</th>
+                <td><span th:text="${uniqueStudentCount}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

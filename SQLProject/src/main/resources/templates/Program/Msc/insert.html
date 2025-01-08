@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{~/css/main.css}">
+    <style>
+        input, select {
+            text-align: center;
+            background-color: #191919 !important;
+            color: white !important;
+        }
+    </style>
+    <title>Inserting Student - Msc</title>
+</head>
+<body>
+<br/>
+
+<div class="col-12 d-flex justify-content-center align-items-center">
+    <h2>Antonis</h2>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger" onclick="location.href='http://localhost:8080/program/show/all'"
+                type="button">Return
+        </button>
+    </div>
+    <div class="col-8"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger" onclick="window.location.href=window.location.href" type="button">
+            Clear fields
+        </button>
+    </div>
+</div>
+
+<br/>
+<form action="http://localhost:8080/studentmsc/insert" method="POST" th:object="${studentMscDto}">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Student Code</th>
+                    <td>
+                        <input class="form-control border-0" th:field="*{id}"
+                               placeholder="Write here the new student code" required type="text"
+                               maxlength="6" minlength="6">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Student ID</th>
+                    <td>
+                        <select class="form-select border-0" required th:field="*{student}">
+                            <option th:each="student : ${studentsList}"
+                                    th:text="${student.getId() + ' - ' + student.getLastName()}"
+                                    th:value="${student.getId()}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>MSc ID</th>
+                    <td>
+                        <select class="form-select border-0" required th:field="*{msc}">
+                            <option th:each="msc : ${mscList}"
+                                    th:text="${msc.getTitle() + ' - ' + msc.getDepartment().getName() + ' (code: ' + msc.getDepartment().getCode() + ')'}"
+                                    th:value="${msc.getId()}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Registration</th>
+                    <td><input class="form-control border-0" th:field="*{registration}" required type="date"></td>
+                </tr>
+                <tr>
+                    <th>Graduation <small style="color: white;">(Optional)</small></th>
+                    <td><input class="form-control border-0" th:field="*{graduation}" type="date"></td>
+                </tr>
+                <tr>
+                    <th>Grade <small style="color: white;">(Optional)</small></th>
+                    <td><input class="form-control border-0" th:field="*{grade}" placeholder="Write here grade" type="number" max="10" min="5" step="0.01"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="col-2 d-flex justify-content-center align-items-center">
+            <button class="btn border border-danger" type="submit">
+                Commit
+            </button>
+        </div>
+    </div>
+</form>
+
+<br/>
+<br/>
+
+</body>
+</html>

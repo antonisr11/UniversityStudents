@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{~/css/main.css}">
+    <style>
+        input, select {
+            text-align: center;
+            background-color: #191919 !important;
+            color: white !important;
+        }
+    </style>
+    <title>Showing All MScs</title>
+</head>
+<body>
+
+<br/>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 d-flex justify-content-center align-items-center">
+        <h2>Antonis</h2>
+    </div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger" onclick="location.href='http://localhost:8080/msc/show/insert'"
+                type="button">
+            Add Msc
+        </button>
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger" onclick="location.href='http://localhost:8080/'"
+                type="button">Return
+        </button>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2">
+        <button class="btn border border-danger" onclick="location.href='http://localhost:8080/msc/show/free'"
+                type="button">
+            Show Free MScs
+        </button>
+    </div>
+    <div class="col-2">
+        <button class="btn border border-danger" onclick="location.href='http://localhost:8080/msc/show/costPerMonth'"
+                type="button">
+            Order By Cost per Month
+        </button>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger" onclick="location.href='http://localhost:8080/msc/show/all'"
+                type="button">
+            Refresh
+        </button>
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <h6>Showing <b> <span th:text="${mscsList.size()}"/></b> MScs &nbsp;</h6>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 d-flex justify-content-end align-items-center">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Department ID</th>
+                <th class="text-center">Title</th>
+                <th class="text-center">Months Duration</th>
+                <th class="text-center">Cost</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody th:each="i: ${#numbers.sequence(0, mscsList.size()-1)}" th:if="${mscsList.size() > 0}">
+            <tr>
+                <td class="align-middle"><span th:text="${i+1}"/></td>
+                <td class="align-middle"><span th:text="${mscsList.get(i).getDepartment().getId()}"/></td>
+                <td class="align-middle"><span th:text="${mscsList.get(i).getTitle()}"/></td>
+                <td class="align-middle"><span th:text="${mscsList.get(i).getMonthsDuration()}"/></td>
+                <td class="align-middle"><span th:text="${mscsList.get(i).getCost() == 0 ? 'Free' : mscsList.get(i).getCost()}"/></td>
+                <td class="align-middle">
+                    <button class="btn btn-info"
+                            th:attr="onclick=|location.href='http://localhost:8080/msc/show/'+'${mscsList.get(i).getId()}';|"
+                            type="button">
+                        Details
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{~/css/main.css}">
+    <style>
+        input, select {
+            text-align: center;
+            background-color: #191919 !important;
+            color: white !important;
+        }
+    </style>
+    <title>Showing One Job</title>
+</head>
+<body>
+<br/>
+
+<div class="col-12 d-flex justify-content-center align-items-center">
+    <h2>Antonis</h2>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button type="button" class="btn border border-danger"
+                onclick="location.href='http://localhost:8080/job/show/all'">Return
+        </button>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <form method="POST" action="http://localhost:8080/job/delete">
+            <input type="hidden" name="ID" th:value="${job.getId()}">
+            <button type="submit" class="btn border border-danger">Delete Job</button>
+        </form>
+    </div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger"
+                th:attr="onclick=|location.href='http://localhost:8080/job/show/update/'+'${job.getId()}';|"
+                type="button">
+            Edit job
+        </button>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class="btn border border-danger"
+                th:attr="onclick=|location.href='http://localhost:8080/job/show/'+'${job.getId()}';|"
+                type="button">
+            Refresh Page
+        </button>
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>ID</th>
+                <td><span th:text="${job.getId()}"/></td>
+            </tr>
+            </tr>
+            <tr>
+                <th>Student</th>
+                <td>
+                    <a th:href="'http://localhost:8080/student/show/' + ${job.getStudent().getId()}" style="text-decoration:none;"><span
+                            th:text="${job.getStudent().getFirstName() + ' ' + job.getStudent().getLastName()}" style="color: blue;"/></a>
+                </td>
+            </tr>
+            <tr>
+                <th>Company Name</th>
+                <td><span th:text="${job.getCompanyName()}"/></td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td><span th:text="${job.getTitle()}"/></td>
+            </tr>
+            <tr>
+                <th>Weekly Hours</th>
+                <td><span th:text="${job.getWeeklyHours()}"/></td>
+            </tr>
+            <tr>
+                <th>Start Date</th>
+                <td><span th:text="${job.getStart()}"/></td>
+            </tr>
+            <tr>
+                <th>End Date</th>
+                <td>
+                    <span th:if="${job.getEnd() != null}" th:text="${job.getEnd()}"/>
+                    <span th:if="${job.getEnd() == null}" style="font-style: italic;">
+                        Not finished yet
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th>Leave Reason</th>
+                <td><span th:text="${job.getLeaveReason()}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
