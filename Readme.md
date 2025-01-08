@@ -4,6 +4,6 @@ The objective of this project is to design and implement an information system t
 
 ## Entity Relationship Model & Relational Model
 
-[image 1]
+![image 1](https://github.com/user-attachments/assets/21ac4ad2-3b97-418f-bfa3-ec2ba59cad31)
 
-[image 2]
+![image 2](https://github.com/user-attachments/assets/fcf077cf-891a-42bf-97a9-2a8af59a036a)
